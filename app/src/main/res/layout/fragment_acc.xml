@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/llblue"
+    android:padding="21sp"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="2dp"
+        android:layout_height="300dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/acc_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Account"
+                android:textSize="26sp"
+                android:gravity="center"
+                android:textColor="@color/lblue"
+                android:textStyle="bold|italic"
+
+
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Amount :100 kes"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:textColor="@color/lblue"
+                android:id="@+id/acc_view"
+
+
+
+
+                />
+            <Button
+
+                android:layout_marginTop="21dp"
+                android:id="@+id/depoBtn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="Deposit"
+                />
+            <Button
+
+                android:layout_marginTop="21dp"
+                android:id="@+id/withBtn"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="Withdraw"
+                />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

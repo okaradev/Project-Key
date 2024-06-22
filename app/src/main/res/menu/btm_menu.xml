@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="home"
+        android:id="@+id/home_"
+        android:icon="@drawable/homr"
+
+        />
+    <item
+        android:title="Account"
+        android:id="@+id/acc_"
+        android:icon="@drawable/accicon"
+
+        />
+
+</menu>
