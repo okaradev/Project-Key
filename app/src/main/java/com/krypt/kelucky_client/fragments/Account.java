@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,11 +35,11 @@ public class Account extends Fragment {
     String data;
     Button deposit,with;
     TextView acc, balance;
-    private static final String CONSUMER_KEY = "your_consumer_key";
-    private static final String CONSUMER_SECRET = "your_consumer_secret";
-    private static final String SHORTCODE = "your_shortcode";
-    private static final String PASSKEY = "your_passkey";
-    private static final String INITIATOR_NAME = "your_initiator_name";
+    private static final String CONSUMER_KEY = "aUlBQgrFMGLdvF1yhyhLGGU4iJW9NQJKqHLngQVfkrAyqC6S";
+    private static final String CONSUMER_SECRET = "ajSEvmK48U0jV0n4UNk6EfmsKrXuNH1ebRqnFdOKivOcW1Dlg3fHIiJh0UrOvbZm";
+    private static final String SHORTCODE = "174379";
+    private static final String PASSKEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919";
+    private static final String INITIATOR_NAME = "testapi";
     private static final String SECURITY_CREDENTIAL = "your_security_credential";
     private static final String TRANSACTION_TYPE = "CustomerPayBillOnline";
 
@@ -58,6 +59,7 @@ public class Account extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Intent intent = getActivity().getIntent();
          data = intent.getStringExtra("key");
+        Log.e("testno",data.substring(1));
 
         acc=view.findViewById(R.id.acc_txt);
         balance=view.findViewById(R.id.acc_view);
@@ -67,6 +69,7 @@ public class Account extends Fragment {
             @Override
             public void onClick(View v) {
                 initiateMpesaPayment();
+
             }
         });
         with.setOnClickListener(new View.OnClickListener() {
@@ -114,8 +117,10 @@ public class Account extends Fragment {
 
         Response response = client.newCall(request).execute();
         JSONObject jsonObject = new JSONObject(response.body().string());
+        Log.e("response sa",response.body().string());
         return jsonObject.getString("access_token");
     }
+
 
     private String makeMpesaPayment(String accessToken) throws IOException, JSONException {
         OkHttpClient client = new OkHttpClient();
@@ -129,7 +134,7 @@ public class Account extends Fragment {
         requestBody.put("Amount", "1");
         requestBody.put("PartyA", "254"+data.substring(1)); // replace with customer phone number
         requestBody.put("PartyB", SHORTCODE);
-        requestBody.put("PhoneNumber", "254112517665"); // replace with customer phone number
+        requestBody.put("PhoneNumber", "254"+data.substring(1)); // replace with customer phone number
         requestBody.put("CallBackURL", "your_callback_url");
         requestBody.put("AccountReference", "Test");
         requestBody.put("TransactionDesc", "Test payment");
